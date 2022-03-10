@@ -4,13 +4,12 @@ import db from "../../utils/firebase"
 import {getValue} from "../../utils/getDoc";
 import { doc, updateDoc } from "firebase/firestore";
 
-const Main = () => {
+const First = () => {
   const [status, setStatus] = useState(true)
   const docRef = doc(db, "test", '1');
 
   useEffect(() => {
     getValue('1').then(r => {
-      console.log(r.value)
       setStatus(r.value)
     })
   }, [status])
@@ -24,7 +23,6 @@ const Main = () => {
             value: !status
           });
           getValue('1').then(r => {
-            console.log(r.value)
             setStatus(r.value)
           })
         }}>Change Doc 1 status</button>
@@ -34,4 +32,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default First
