@@ -1,23 +1,34 @@
 <template>
   <div>
-    <h4>{{ msg }}</h4>
-    <button @click="clickMe()">{{ this.clicky ? "Click" : "Clack" }}</button>
+    <h1>{{ msg }}</h1>
+    <button class="control-button" @click="changeValue()">Change Doc 3 status</button>
+    <span>{{this.status === true ? 'true' : 'false'}}</span>
+    <div><a href="/main">Back to Main Page</a></div>
   </div>
 </template>
 <script>
+import db from "../utils/firebase"
+import {getValue} from "../utils/getDoc";
+import { doc, updateDoc } from "firebase/firestore";
   export default {
-    name: 'testing',
+    name: 'ThirdPageVue',
     props: {
       msg: String
     },
     methods: {
-      clickMe() {
-        this.clicky = !this.clicky
+      async changeValue() {
+        let docRef = doc(db, "test", '3');
+        await updateDoc(docRef, {
+          value: !this.status
+        });
+        getValue('3').then(r => {
+          this.status = r.value
+        })
       }
     },
     data() {
       return {
-        clicky: true
+        status: true
       }
     }
   }

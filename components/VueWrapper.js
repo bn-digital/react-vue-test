@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Vue from "vue"
-import testing from "./vue-components/Test.vue";
+import ThirdPageVue from "./vue-components/Test.vue";
 
 const VueWrapper = (
 	{ componentProps }) => {
@@ -21,7 +21,7 @@ const VueWrapper = (
 				};
 			},
 			render: function(h) {
-				return h(testing, {
+				return h(ThirdPageVue, {
 					props: this.props
 				});
 			}

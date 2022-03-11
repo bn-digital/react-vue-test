@@ -5,7 +5,7 @@ import Home from "./pages/home";
 import First from "./pages/main";
 import SecondPage from "./pages/second";
 import ThirdPageReact from "./pages/third";
-
+import './index.css';
 function Main() {
   return (
     <BrowserRouter>
